@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import ClassCounter from "./components/classCounter";
 import HooksCounter from "./components/HooksCounter";
 import HooksCounter2 from "./components/HooksCounter2";
 import HooksEffect from "./components/HooksEffect";
 import IntervalHooksCounter from "./components/IntervalHooksCounter";
-import ReducerCount from './components/reducerCount'
+import ReducerCount from "./components/reducerCount";
 import ReducerCountObject from "./components/ReduceCountObject";
+import ContextExampleA from "./components/ContextExampleA";
+
+export const UserContext = React.createContext();
+
 function App() {
+  const [data, setData] = useState({name:'Satwinder', value:20});
   return (
     <div className="App">
       <h1> Hello world </h1>
@@ -29,6 +34,11 @@ function App() {
 
       <h1>Reducer with object</h1>
       <ReducerCountObject></ReducerCountObject>
+
+      <h1>Context with example</h1>
+      <UserContext.Provider value={data}>
+        <ContextExampleA></ContextExampleA>
+      </UserContext.Provider>
     </div>
   );
 }

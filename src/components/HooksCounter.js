@@ -12,7 +12,6 @@ function HooksCounter() {
         setstate(prevoius => prevoius+1)
     }
 
-   
     return (
         <div>
             {/* setState() method makes the component re render */}
