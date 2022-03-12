@@ -1,10 +1,18 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../App';
-export default function ContextExampleC(){
+import React, { useContext } from "react";
+import { CountContext } from "../App";
 
-    const data = useContext(UserContext)
-    return (
-        <h1>Componect C: value is: {data.name} , {data.value}</h1>
-    )
-
+export default function ContextExampleC() {
+  const data = useContext(CountContext);
+  return (
+    <>
+      {data.state}
+      <button onClick={() => data.dispatch({ type: "increament", value: 3 })}>
+        Increament
+      </button>
+      <button onClick={() => data.dispatch({ type: "decreament", value: 3 })}>
+        Decreament
+      </button>
+      <button onClick={() => data.dispatch({ type: "reset" })}>Reset</button>
+    </>
+  );
 }

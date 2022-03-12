@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import ClassCounter from "./components/classCounter";
 import HooksCounter from "./components/HooksCounter";
 import HooksCounter2 from "./components/HooksCounter2";
@@ -7,11 +7,29 @@ import IntervalHooksCounter from "./components/IntervalHooksCounter";
 import ReducerCount from "./components/reducerCount";
 import ReducerCountObject from "./components/ReduceCountObject";
 import ContextExampleA from "./components/ContextExampleA";
+import FocusInput from "./components/FocusInput";
 
-export const UserContext = React.createContext();
+export const CountContext = React.createContext();
+
+// if we use state as object then in reducer function we return an object in given cases
+const initialState = 0;
+
+const reducer = (state, action) => {  
+  console.log("In reducer");
+   switch (action.type) {
+     case 'increament': 
+       return state + action.value;
+      case 'decreament':
+        return state - action.value;
+      case 'reset': 
+        return 0;
+      default: return state;  
+   }
+
+}
 
 function App() {
-  const [data, setData] = useState({name:'Satwinder', value:20});
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div className="App">
       <h1> Hello world </h1>
@@ -36,9 +54,12 @@ function App() {
       <ReducerCountObject></ReducerCountObject>
 
       <h1>Context with example</h1>
-      <UserContext.Provider value={data}>
+      <CountContext.Provider value={ { state, dispatch} }>
         <ContextExampleA></ContextExampleA>
-      </UserContext.Provider>
+      </CountContext.Provider>
+
+      <h1>usRef Example</h1>
+      <FocusInput/> 
     </div>
   );
 }
