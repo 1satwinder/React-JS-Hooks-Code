@@ -8,6 +8,9 @@ import ReducerCount from "./components/reducerCount";
 import ReducerCountObject from "./components/ReduceCountObject";
 import ContextExampleA from "./components/ContextExampleA";
 import FocusInput from "./components/FocusInput";
+import FetchDataFromAPI from "./FetchDataFromAPI";
+import FetchDataFromAPI2 from "./FetchDataFromAPI2";
+import FetchDataFromAPI3 from "./FetchDataFromAPI3";
 
 export const CountContext = React.createContext();
 
@@ -60,6 +63,16 @@ function App() {
 
       <h1>usRef Example</h1>
       <FocusInput/> 
+      
+      <h1>Fetch Data from API</h1>
+      <FetchDataFromAPI/>
+
+      <h1>Fetch Data from API 2</h1>
+      <FetchDataFromAPI2/>
+
+      <h1>Fetch Data from API 3</h1>
+      <FetchDataFromAPI3/>
+
     </div>
   );
 }
